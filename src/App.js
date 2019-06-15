@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { List } from "immutable";
+
 import "./App.css";
 
 import Header from "./Header";
@@ -8,8 +10,8 @@ import { GetListData } from "./Api/ListAPI";
 
 class App extends Component {
   state = {
-    sampleSize: "",
-    listItems: []
+    sampleSize: "100",
+    listItems: List()
   };
 
   componentDidMount() {}
@@ -19,12 +21,19 @@ class App extends Component {
   };
 
   handlereset = () => {
-    this.setState({ sampleSize: "", listItems: [] });
+    this.setState({ sampleSize: "", listItems: List() });
   };
 
   handleGenerate = () => {
-    const { sampleSize } = this.state;
-    this.setState({ listItems: GetListData(parseInt(sampleSize)) });
+    const { sampleSize, listItems } = this.state;
+    const desiredSampleSize = parseInt(sampleSize);
+    if (!desiredSampleSize) {
+      alert("Please provide a positive number");
+    } else {
+      this.setState({
+        listItems: listItems.concat(GetListData(desiredSampleSize))
+      });
+    }
   };
 
   render() {

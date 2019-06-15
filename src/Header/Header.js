@@ -11,6 +11,7 @@ const Header = ({
     <input
       type="number"
       min="0"
+      max="100000"
       placeholder="# of items"
       onChange={handleSampleSizeChanged}
       value={sampleSize}

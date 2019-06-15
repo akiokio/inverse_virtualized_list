@@ -1,7 +1,16 @@
 import faker from "faker";
+import { List, Map } from "immutable";
 
 export const GetListData = sampleSize => {
-  return Array(sampleSize)
-    .fill()
-    .map((_, i) => faker.lorem.paragraph(1));
+  return List(
+    Array(sampleSize)
+      .fill()
+      .map((_, i) =>
+        Map({
+          localIndex: i,
+          content: faker.lorem.paragraph(1),
+          createdAt: new Date()
+        })
+      )
+  );
 };
