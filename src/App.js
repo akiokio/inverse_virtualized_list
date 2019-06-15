@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { List } from "immutable";
 
-import "./App.css";
+import styles from "./App.module.scss";
 
 import Header from "./Header";
 import InvertedList from "./InvertedList";
@@ -39,7 +39,7 @@ class App extends Component {
   render() {
     const { listItems, sampleSize } = this.state;
     return (
-      <div className="App">
+      <div className={styles.App}>
         <Header
           sampleSize={sampleSize}
           handleSampleSizeChanged={this.handleSampleSizeChanged}
