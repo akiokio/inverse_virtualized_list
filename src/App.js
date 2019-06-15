@@ -14,8 +14,6 @@ class App extends Component {
     listItems: List()
   };
 
-  componentDidMount() {}
-
   handleSampleSizeChanged = event => {
     this.setState({ sampleSize: event.target.value });
   };

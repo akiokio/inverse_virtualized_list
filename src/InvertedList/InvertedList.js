@@ -1,4 +1,4 @@
-import React, { Component, createRef } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { List as ImmutableList } from "immutable";
 
@@ -15,8 +15,6 @@ class InvertedList extends Component {
   static propTypes = {
     listItems: PropTypes.instanceOf(ImmutableList).isRequired
   };
-
-  listRef = createRef();
 
   state = {
     scrollPosition: -1
@@ -48,9 +46,7 @@ class InvertedList extends Component {
   componentDidUpdate(prevProps) {
     const { listItems } = this.props;
     if (!prevProps.listItems.equals(listItems)) {
-      console.log("list is different");
       this.cache.clearAll();
-      this.listRef.current.scrollToRow(listItems.size);
     }
   }
 
@@ -66,7 +62,6 @@ class InvertedList extends Component {
       <WindowScroller>
         {({ height }) => (
           <List
-            ref={this.listRef}
             height={height}
             width={300}
             deferredMeasurementCache={this.cache}
