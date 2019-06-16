@@ -4,19 +4,24 @@ import { Map } from "immutable";
 
 import styles from "./ListItem.module.scss";
 
-const ListItem = ({ style, item }) => {
+const ListItem = ({ style, item, handleRemove, index }) => {
   return (
     <div style={style}>
       <div className={styles.ListItem}>
-        <div>{item.get("content")}</div>
-        <br />
-        <div>
-          <strong>Created at:</strong>{" "}
-          {item.get("createdAt").toLocaleTimeString("en-US")}
+        <div className={styles.ItemLeftSide}>
+          <div>{item.get("content")}</div>
+          <br />
+          <div>
+            <strong>Created at:</strong>{" "}
+            {item.get("createdAt").toLocaleTimeString("en-US")}
+          </div>
+          <br />
+          <div>
+            <strong>Position in the batch:</strong> {item.get("localIndex")}
+          </div>
         </div>
-        <br />
-        <div>
-          <strong>Batch index:</strong> {item.get("localIndex")}
+        <div className={styles.ItemRightSide}>
+          <button onClick={() => handleRemove(index)}>X</button>
         </div>
       </div>
     </div>
@@ -25,7 +30,9 @@ const ListItem = ({ style, item }) => {
 
 ListItem.propTypes = {
   style: PropTypes.object.isRequired,
-  item: PropTypes.instanceOf(Map).isRequired
+  item: PropTypes.instanceOf(Map).isRequired,
+  handleRemove: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired
 };
 
 export default ListItem;

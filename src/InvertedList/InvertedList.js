@@ -28,7 +28,7 @@ class InvertedList extends Component {
 
   noRowsRenderer = () => <NoRow />;
   rowRenderer = ({ index, key, parent, style }) => {
-    const { listItems } = this.props;
+    const { listItems, handleRemoveItem } = this.props;
     return (
       <CellMeasurer
         cache={this.cache}
@@ -38,7 +38,14 @@ class InvertedList extends Component {
         parent={parent}
       >
         {({ measure }) => {
-          return <ListItem style={style} item={listItems.get(index)} />;
+          return (
+            <ListItem
+              style={style}
+              item={listItems.get(index)}
+              index={index}
+              handleRemove={handleRemoveItem}
+            />
+          );
         }}
       </CellMeasurer>
     );

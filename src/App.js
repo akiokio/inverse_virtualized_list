@@ -47,6 +47,16 @@ class App extends Component {
     }
   };
 
+  handleRemoveItem = index => {
+    const { listItems } = this.state;
+    const newList = listItems.delete(index);
+
+    this.setState({
+      listItems: newList,
+      sampleSize: newList.size.toString()
+    });
+  };
+
   render() {
     const { listItems, sampleSize } = this.state;
     return (
@@ -61,7 +71,10 @@ class App extends Component {
         </section>
         <section className={styles.ListSection}>
           <div className={styles.ListBox}>
-            <InvertedList listItems={listItems} />
+            <InvertedList
+              listItems={listItems}
+              handleRemoveItem={this.handleRemoveItem}
+            />
           </div>
         </section>
       </div>
