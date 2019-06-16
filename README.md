@@ -6,4 +6,4 @@ Author: Guilherme Akio Sakae
 
 Github: https://github.com/akiokio/inverse_virtualized_list
 
-Url: https://invertedlist.akio.dev/
+Url: https://inverselist.akio.dev/

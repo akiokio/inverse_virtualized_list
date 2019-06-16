@@ -39,7 +39,7 @@ class App extends Component {
       alert("Please provide a positive number");
     } else if (desiredSampleSize >= 500000) {
       const confirmation = window.confirm(
-        "Rendering that amount of items will work but i can take a while, do you want to continue"
+        "Rendering that amount of items will work but it can take a while, do you want to continue?"
       );
       confirmation && this.generateNewList(desiredSampleSize);
     } else {
