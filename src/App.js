@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { List } from "immutable";
 
 import styles from "./App.module.scss";
+import "./Common/elements.scss";
 
 import Header from "./Header";
 import InvertedList from "./InvertedList";
@@ -44,7 +45,9 @@ class App extends Component {
           handleGenerate={this.handleGenerate}
           handlereset={this.handlereset}
         />
-        <InvertedList listItems={listItems} />
+        <section className={styles.ListWrapper}>
+          <InvertedList listItems={listItems} />
+        </section>
       </div>
     );
   }

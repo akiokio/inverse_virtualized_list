@@ -1,14 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import styles from "./Header.module.scss";
+
 const Header = ({
   sampleSize,
   handleGenerate,
   handlereset,
   handleSampleSizeChanged
 }) => (
-  <div>
+  <div className={styles.Header}>
     <input
+      className={styles.NumberOfRows}
       type="number"
       min="0"
       max="100000"

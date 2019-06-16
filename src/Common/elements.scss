@@ -1,0 +1,21 @@
+@import "./variables.scss";
+
+input {
+  height: 38px;
+  border-radius: $border-radius;
+  border: 1px solid $gray;
+  padding: 0 16px;
+  font-size: $font-size-base;
+  color: $black;
+}
+
+button {
+  color: $white;
+  background: $red;
+  height: 38px;
+  margin: 8px;
+  padding: 0 16px;
+  border-radius: $border-radius;
+  font-size: $font-size-base;
+  border: 0;
+}
