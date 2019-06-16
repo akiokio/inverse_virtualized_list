@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { List as ImmutableList } from "immutable";
 
 import ListItem from "../ListItem";
-import NoRow from "../NoRows";
+import NoRows from "../NoRows";
 
 import {
   AutoSizer,
@@ -26,7 +26,7 @@ class InvertedList extends Component {
     minHeight: 25
   });
 
-  noRowsRenderer = () => <NoRow />;
+  noRowsRenderer = () => <NoRows />;
   rowRenderer = ({ index, key, parent, style }) => {
     const { listItems, handleRemoveItem } = this.props;
     return (
