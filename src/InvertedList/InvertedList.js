@@ -5,8 +5,6 @@ import { List as ImmutableList } from "immutable";
 import ListItem from "../ListItem";
 import NoRow from "../NoRows";
 
-import styles from "./InvertedList.module.scss";
-
 import {
   AutoSizer,
   List,
