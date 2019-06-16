@@ -12,7 +12,7 @@ const ListItem = ({ style, item, handleRemove, index }) => {
           <div>{item.get("content")}</div>
           <br />
           <div>
-            <strong>Created at:</strong>{" "}
+            <strong>Created at: </strong>
             {item.get("createdAt").toLocaleTimeString("en-US")}
           </div>
           <br />

@@ -1,6 +1,6 @@
-# Inverted virtualized list
+# Inverse virtualized list
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/a87095ce-b244-4534-ad89-a1ee77517265/deploy-status)](https://app.netlify.com/sites/invertedlist/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a87095ce-b244-4534-ad89-a1ee77517265/deploy-status)](https://app.netlify.com/sites/Inverselist/deploys)
 
 Author: Guilherme Akio Sakae
 

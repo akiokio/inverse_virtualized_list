@@ -12,7 +12,7 @@ import {
   CellMeasurer
 } from "react-virtualized";
 
-class InvertedList extends Component {
+class InverseList extends Component {
   static propTypes = {
     listItems: PropTypes.instanceOf(ImmutableList).isRequired
   };
@@ -51,21 +51,26 @@ class InvertedList extends Component {
     );
   };
 
+  // shouldComponentUpdate(nextProps) {
+  //   const { listItems } = this.props;
+  //   return !nextProps.listItems.equals(listItems) ? true : false;
+  // }
+
   componentDidUpdate(prevProps) {
     const { listItems } = this.props;
-    if (!prevProps.listItems.equals(listItems)) {
-      this.cache.clearAll();
-    }
+    !prevProps.listItems.equals(listItems) && this.cache.clearAll();
   }
 
   handleRowsRendered = () => {
     const { listItems } = this.props;
+    console.log("row rendered");
     this.setState({ scrollPosition: listItems.size });
   };
 
   render() {
     const { listItems } = this.props;
     const { scrollPosition } = this.state;
+    console.log("render", listItems.size);
     return (
       <AutoSizer>
         {({ width, height }) => (
@@ -88,4 +93,4 @@ class InvertedList extends Component {
   }
 }
 
-export default InvertedList;
+export default InverseList;

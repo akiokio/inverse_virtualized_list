@@ -5,7 +5,7 @@ import styles from "./App.module.scss";
 import "./Common/elements.scss";
 
 import Header from "./Header";
-import InvertedList from "./InvertedList";
+import InverseList from "./InverseList";
 
 import { GetListData } from "./Api/ListAPI";
 
@@ -52,8 +52,7 @@ class App extends Component {
     const newList = listItems.delete(index);
 
     this.setState({
-      listItems: newList,
-      sampleSize: newList.size.toString()
+      listItems: newList
     });
   };
 
@@ -71,7 +70,7 @@ class App extends Component {
         </section>
         <section className={styles.ListSection}>
           <div className={styles.ListBox}>
-            <InvertedList
+            <InverseList
               listItems={listItems}
               handleRemoveItem={this.handleRemoveItem}
             />
