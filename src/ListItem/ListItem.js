@@ -18,7 +18,7 @@ const ListItem = ({ style, item, handleRemove, index }) => {
           <br />
           <div>
             <strong>Position: </strong>
-            {index}
+            {index + 1}
           </div>
         </div>
         <div className={styles.ItemRightSide}>

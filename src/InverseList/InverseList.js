@@ -20,7 +20,6 @@ class InverseList extends Component {
   };
 
   state = {
-    scrollPosition: -1,
     shouldShowScrollToBottomButton: false
   };
 
@@ -60,14 +59,17 @@ class InverseList extends Component {
     const { listItems } = this.props;
     if (!prevProps.listItems.equals(listItems)) {
       this.cache.clearAll();
-      this.setState({ scrollPosition: listItems.size - 1 });
+
+      this.listRef.current.scrollToRow(listItems.size);
     }
   }
 
   handleScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
     const { listItems } = this.props;
     const isAtTheBottom = clientHeight + scrollTop === scrollHeight;
-    const shouldShowScrollToBottomButton = !isAtTheBottom && listItems.size > 0;
+
+    const shouldShowScrollToBottomButton =
+      clientHeight > 0 && !isAtTheBottom && listItems.size > 0;
     this.setState({ shouldShowScrollToBottomButton });
   };
 
@@ -78,7 +80,7 @@ class InverseList extends Component {
 
   render() {
     const { listItems } = this.props;
-    const { scrollPosition, shouldShowScrollToBottomButton } = this.state;
+    const { shouldShowScrollToBottomButton } = this.state;
     return (
       <Fragment>
         <AutoSizer>
@@ -93,7 +95,7 @@ class InverseList extends Component {
               rowHeight={this.cache.rowHeight}
               rowRenderer={this.rowRenderer}
               noRowsRenderer={this.noRowsRenderer}
-              scrollToIndex={scrollPosition}
+              scrollToIndex={listItems.size}
               onRowsRendered={this.handleRowsRendered}
               onScroll={this.handleScroll}
               scrollToAlignment="end"
