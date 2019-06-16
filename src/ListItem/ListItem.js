@@ -17,7 +17,8 @@ const ListItem = ({ style, item, handleRemove, index }) => {
           </div>
           <br />
           <div>
-            <strong>Position in the batch:</strong> {item.get("localIndex")}
+            <strong>Position: </strong>
+            {index}
           </div>
         </div>
         <div className={styles.ItemRightSide}>

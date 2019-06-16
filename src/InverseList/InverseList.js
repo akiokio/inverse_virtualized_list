@@ -23,7 +23,7 @@ class InverseList extends Component {
 
   cache = new CellMeasurerCache({
     fixedWidth: true,
-    minHeight: 25
+    minHeight: 50
   });
 
   noRowsRenderer = () => <NoRows />;
@@ -58,19 +58,16 @@ class InverseList extends Component {
 
   componentDidUpdate(prevProps) {
     const { listItems } = this.props;
-    !prevProps.listItems.equals(listItems) && this.cache.clearAll();
+    if (!prevProps.listItems.equals(listItems)) {
+      this.cache.clearAll();
+      this.setState({ scrollPosition: listItems.size - 1 });
+    }
   }
-
-  handleRowsRendered = () => {
-    const { listItems } = this.props;
-    console.log("row rendered");
-    this.setState({ scrollPosition: listItems.size });
-  };
 
   render() {
     const { listItems } = this.props;
     const { scrollPosition } = this.state;
-    console.log("render", listItems.size);
+    console.log("render");
     return (
       <AutoSizer>
         {({ width, height }) => (
