@@ -5,6 +5,7 @@ import styles from "./Header.module.scss";
 
 const Header = ({
   sampleSize,
+  generateButtonEnabled,
   handleGenerate,
   handlereset,
   handleSampleSizeChanged
@@ -18,13 +19,19 @@ const Header = ({
       onChange={handleSampleSizeChanged}
       value={sampleSize}
     />
-    <button onClick={handleGenerate}>Generate</button>
+    <button
+      onClick={handleGenerate}
+      disabled={generateButtonEnabled ? false : true}
+    >
+      {generateButtonEnabled ? "Generate" : "Working..."}
+    </button>
     <button onClick={handlereset}>Reset</button>
   </div>
 );
 
 Header.propTypes = {
   sampleSize: PropTypes.string,
+  generateButtonEnabled: PropTypes.bool.isRequired,
   handleGenerate: PropTypes.func.isRequired,
   handlereset: PropTypes.func.isRequired
 };

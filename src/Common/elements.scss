@@ -19,4 +19,8 @@ button {
   font-size: $font-size-base;
   border: 0;
   cursor: pointer;
+
+  &:disabled {
+    opacity: 0.5;
+  }
 }

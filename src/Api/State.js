@@ -4,7 +4,8 @@ const STATE_KEY = "inverseListState";
 
 export const initialState = {
   sampleSize: "100",
-  listItems: List()
+  listItems: List(),
+  generateButtonEnabled: true
 };
 
 export const saveState = state => {
@@ -13,9 +14,11 @@ export const saveState = state => {
 
 export const loadState = () => {
   const localState = JSON.parse(localStorage.getItem(STATE_KEY));
+
   return localState
     ? {
         sampleSize: localState.sampleSize,
+        generateButtonEnabled: localState.generateButtonEnabled || true,
         listItems: fromJS(localState.listItems)
       }
     : initialState;

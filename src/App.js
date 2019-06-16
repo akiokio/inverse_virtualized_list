@@ -35,9 +35,16 @@ class App extends Component {
     this.setState({
       listItems: listItems.concat(GetListData(sampleSize))
     });
+    // Cooldown to avoid click spam
+    setTimeout(() => {
+      this.setState({
+        generateButtonEnabled: true
+      });
+    }, 300);
   };
 
   handleGenerate = () => {
+    this.setState({ generateButtonEnabled: false });
     const { sampleSize } = this.state;
     const desiredSampleSize = parseInt(sampleSize);
     if (!desiredSampleSize) {
@@ -63,12 +70,13 @@ class App extends Component {
   };
 
   render() {
-    const { listItems, sampleSize } = this.state;
+    const { listItems, sampleSize, generateButtonEnabled } = this.state;
     return (
       <div className={styles.App}>
         <section>
           <Header
             sampleSize={sampleSize}
+            generateButtonEnabled={generateButtonEnabled}
             handleSampleSizeChanged={this.handleSampleSizeChanged}
             handleGenerate={this.handleGenerate}
             handlereset={this.handlereset}
