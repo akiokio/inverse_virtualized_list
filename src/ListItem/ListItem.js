@@ -22,7 +22,7 @@ const ListItem = ({ style, item, handleRemove, index }) => {
           </div>
         </div>
         <div className={styles.ItemRightSide}>
-          <button onClick={() => handleRemove(index)}>X</button>
+          <button className={styles.RemoveButton} onClick={() => handleRemove(index)}>X</button>
         </div>
       </div>
     </div>

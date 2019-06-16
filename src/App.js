@@ -49,10 +49,9 @@ class App extends Component {
 
   handleRemoveItem = index => {
     const { listItems } = this.state;
-    const newList = listItems.delete(index);
 
     this.setState({
-      listItems: newList
+      listItems: listItems.delete(index)
     });
   };
 
