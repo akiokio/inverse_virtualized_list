@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { List as ImmutableList } from "immutable";
 
 import ListItem from "../ListItem";
+import NoRow from "../NoRows";
 
 import styles from "./InvertedList.module.scss";
 
@@ -10,10 +11,8 @@ import {
   AutoSizer,
   List,
   CellMeasurerCache,
-  CellMeasurer,
-  WindowScroller
+  CellMeasurer
 } from "react-virtualized";
-import "react-virtualized/styles.css";
 
 class InvertedList extends Component {
   static propTypes = {
@@ -29,7 +28,7 @@ class InvertedList extends Component {
     minHeight: 25
   });
 
-  noRowsRenderer = () => <div>Select the number of rows to start</div>;
+  noRowsRenderer = () => <NoRow />;
   rowRenderer = ({ index, key, parent, style }) => {
     const { listItems } = this.props;
     return (

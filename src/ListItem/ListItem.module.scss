@@ -1,0 +1,9 @@
+@import "../Common/variables.scss";
+
+.ListItem {
+  margin: 16px 0;
+  background: $white;
+  border-radius: $border-radius;
+  padding: 16px;
+  margin: 16px;
+}
