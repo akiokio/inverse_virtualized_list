@@ -39,14 +39,18 @@ class App extends Component {
     const { listItems, sampleSize } = this.state;
     return (
       <div className={styles.App}>
-        <Header
-          sampleSize={sampleSize}
-          handleSampleSizeChanged={this.handleSampleSizeChanged}
-          handleGenerate={this.handleGenerate}
-          handlereset={this.handlereset}
-        />
-        <section className={styles.ListWrapper}>
-          <InvertedList listItems={listItems} />
+        <section>
+          <Header
+            sampleSize={sampleSize}
+            handleSampleSizeChanged={this.handleSampleSizeChanged}
+            handleGenerate={this.handleGenerate}
+            handlereset={this.handlereset}
+          />
+        </section>
+        <section className={styles.ListSection}>
+          <div className={styles.ListBox}>
+            <InvertedList listItems={listItems} />
+          </div>
         </section>
       </div>
     );

@@ -7,7 +7,7 @@ export const GetListData = sampleSize => {
       .fill()
       .map((_, i) =>
         Map({
-          localIndex: i,
+          localIndex: i + 1,
           content: faker.lorem.paragraph(1),
           createdAt: new Date()
         })

@@ -4,12 +4,16 @@ import { List as ImmutableList } from "immutable";
 
 import ListItem from "../ListItem";
 
+import styles from "./InvertedList.module.scss";
+
 import {
+  AutoSizer,
   List,
   CellMeasurerCache,
   CellMeasurer,
   WindowScroller
 } from "react-virtualized";
+import "react-virtualized/styles.css";
 
 class InvertedList extends Component {
   static propTypes = {
@@ -59,13 +63,13 @@ class InvertedList extends Component {
     const { listItems } = this.props;
     const { scrollPosition } = this.state;
     return (
-      <WindowScroller>
-        {({ height }) => (
+      <AutoSizer>
+        {({ width, height }) => (
           <List
             height={height}
-            width={300}
+            width={width}
             deferredMeasurementCache={this.cache}
-            overscanRowCount={0}
+            overscanRowCount={5}
             rowCount={listItems.size}
             rowHeight={this.cache.rowHeight}
             rowRenderer={this.rowRenderer}
@@ -75,7 +79,7 @@ class InvertedList extends Component {
             scrollToAlignment="end"
           />
         )}
-      </WindowScroller>
+      </AutoSizer>
     );
   }
 }
