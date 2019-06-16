@@ -13,7 +13,7 @@ const ListItem = ({ style, item, handleRemove, index }) => {
           <br />
           <div>
             <strong>Created at: </strong>
-            {item.get("createdAt").toLocaleTimeString("en-US")}
+            {item.get("createdAt")}
           </div>
           <br />
           <div>
@@ -22,7 +22,12 @@ const ListItem = ({ style, item, handleRemove, index }) => {
           </div>
         </div>
         <div className={styles.ItemRightSide}>
-          <button className={styles.RemoveButton} onClick={() => handleRemove(index)}>X</button>
+          <button
+            className={styles.RemoveButton}
+            onClick={() => handleRemove(index)}
+          >
+            X
+          </button>
         </div>
       </div>
     </div>

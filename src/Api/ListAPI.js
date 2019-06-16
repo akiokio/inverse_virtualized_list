@@ -9,7 +9,7 @@ export const GetListData = sampleSize => {
         Map({
           localIndex: i + 1,
           content: faker.lorem.paragraph(1),
-          createdAt: new Date()
+          createdAt: new Date().toLocaleTimeString("en-US")
         })
       )
   );

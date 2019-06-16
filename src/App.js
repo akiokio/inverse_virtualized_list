@@ -8,12 +8,19 @@ import Header from "./Header";
 import InverseList from "./InverseList";
 
 import { GetListData } from "./Api/ListAPI";
+import { saveState, loadState } from "./Api/State";
 
 class App extends Component {
-  state = {
-    sampleSize: "100",
-    listItems: List()
-  };
+  constructor(props) {
+    super(props);
+
+    const loadedState = loadState();
+    this.state = loadedState;
+
+    window.addEventListener("beforeunload", event => {
+      saveState(this.state);
+    });
+  }
 
   handleSampleSizeChanged = event => {
     this.setState({ sampleSize: event.target.value });
