@@ -1,10 +1,6 @@
-import React, { Component } from "react";
+import React, { Component, Fragment, createRef } from "react";
 import PropTypes from "prop-types";
 import { List as ImmutableList } from "immutable";
-
-import ListItem from "../ListItem";
-import NoRows from "../NoRows";
-
 import {
   AutoSizer,
   List,
@@ -12,14 +8,23 @@ import {
   CellMeasurer
 } from "react-virtualized";
 
+import ListItem from "../ListItem";
+import NoRows from "../NoRows";
+
+import styles from "./InverseList.module.scss";
+
 class InverseList extends Component {
   static propTypes = {
-    listItems: PropTypes.instanceOf(ImmutableList).isRequired
+    listItems: PropTypes.instanceOf(ImmutableList).isRequired,
+    handleRemoveItem: PropTypes.func.isRequired
   };
 
   state = {
-    scrollPosition: -1
+    scrollPosition: -1,
+    shouldShowScrollToBottomButton: false
   };
+
+  listRef = createRef();
 
   cache = new CellMeasurerCache({
     fixedWidth: true,
@@ -64,28 +69,50 @@ class InverseList extends Component {
     }
   }
 
+  handleScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
+    const isAtTheBottom = clientHeight + scrollTop === scrollHeight;
+    this.setState({ shouldShowScrollToBottomButton: !isAtTheBottom });
+  };
+
+  handleScrollToButtom = () => {
+    const { listItems } = this.props;
+    this.listRef.current.scrollToRow(listItems.size);
+  };
+
   render() {
     const { listItems } = this.props;
-    const { scrollPosition } = this.state;
+    const { scrollPosition, shouldShowScrollToBottomButton } = this.state;
     console.log("render");
     return (
-      <AutoSizer>
-        {({ width, height }) => (
-          <List
-            height={height}
-            width={width}
-            deferredMeasurementCache={this.cache}
-            overscanRowCount={5}
-            rowCount={listItems.size}
-            rowHeight={this.cache.rowHeight}
-            rowRenderer={this.rowRenderer}
-            noRowsRenderer={this.noRowsRenderer}
-            scrollToIndex={scrollPosition}
-            onRowsRendered={this.handleRowsRendered}
-            scrollToAlignment="end"
-          />
+      <Fragment>
+        <AutoSizer>
+          {({ width, height }) => (
+            <List
+              ref={this.listRef}
+              height={height}
+              width={width}
+              deferredMeasurementCache={this.cache}
+              overscanRowCount={10}
+              rowCount={listItems.size}
+              rowHeight={this.cache.rowHeight}
+              rowRenderer={this.rowRenderer}
+              noRowsRenderer={this.noRowsRenderer}
+              scrollToIndex={scrollPosition}
+              onRowsRendered={this.handleRowsRendered}
+              onScroll={this.handleScroll}
+              scrollToAlignment="end"
+            />
+          )}
+        </AutoSizer>
+        {shouldShowScrollToBottomButton && (
+          <button
+            onClick={this.handleScrollToButtom}
+            className={styles.ScrolltoBottomButton}
+          >
+            Return to bottom
+          </button>
         )}
-      </AutoSizer>
+      </Fragment>
     );
   }
 }
