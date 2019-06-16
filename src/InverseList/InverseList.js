@@ -56,11 +56,6 @@ class InverseList extends Component {
     );
   };
 
-  // shouldComponentUpdate(nextProps) {
-  //   const { listItems } = this.props;
-  //   return !nextProps.listItems.equals(listItems) ? true : false;
-  // }
-
   componentDidUpdate(prevProps) {
     const { listItems } = this.props;
     if (!prevProps.listItems.equals(listItems)) {
@@ -70,8 +65,10 @@ class InverseList extends Component {
   }
 
   handleScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
+    const { listItems } = this.props;
     const isAtTheBottom = clientHeight + scrollTop === scrollHeight;
-    this.setState({ shouldShowScrollToBottomButton: !isAtTheBottom });
+    const shouldShowScrollToBottomButton = !isAtTheBottom && listItems.size > 0;
+    this.setState({ shouldShowScrollToBottomButton });
   };
 
   handleScrollToButtom = () => {
@@ -82,7 +79,6 @@ class InverseList extends Component {
   render() {
     const { listItems } = this.props;
     const { scrollPosition, shouldShowScrollToBottomButton } = this.state;
-    console.log("render");
     return (
       <Fragment>
         <AutoSizer>
