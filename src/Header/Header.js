@@ -14,7 +14,6 @@ const Header = ({
       className={styles.NumberOfRows}
       type="number"
       min="0"
-      max="100000"
       placeholder="# of items"
       onChange={handleSampleSizeChanged}
       value={sampleSize}

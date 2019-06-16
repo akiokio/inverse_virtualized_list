@@ -23,15 +23,27 @@ class App extends Component {
     this.setState({ sampleSize: "", listItems: List() });
   };
 
+  generateNewList = sampleSize => {
+    const { listItems } = this.state;
+    this.setState({
+      listItems: listItems.concat(GetListData(sampleSize))
+    });
+  };
+
   handleGenerate = () => {
-    const { sampleSize, listItems } = this.state;
+    const { sampleSize } = this.state;
     const desiredSampleSize = parseInt(sampleSize);
     if (!desiredSampleSize) {
+      alert("Please provide a number");
+    } else if (desiredSampleSize < 0) {
       alert("Please provide a positive number");
+    } else if (desiredSampleSize >= 500000) {
+      const confirmation = window.confirm(
+        "Rendering that amount of items will work but i can take a while, do you want to continue"
+      );
+      confirmation && this.generateNewList(desiredSampleSize);
     } else {
-      this.setState({
-        listItems: listItems.concat(GetListData(desiredSampleSize))
-      });
+      this.generateNewList(desiredSampleSize);
     }
   };
 
