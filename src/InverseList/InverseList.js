@@ -7,6 +7,7 @@ import {
   CellMeasurerCache,
   CellMeasurer
 } from "react-virtualized";
+import { sortableContainer } from "react-sortable-hoc";
 
 import ListItem from "../ListItem";
 import NoRows from "../NoRows";
@@ -59,8 +60,10 @@ class InverseList extends Component {
     const { listItems } = this.props;
     if (!prevProps.listItems.equals(listItems)) {
       this.cache.clearAll();
+      this.listRef.current.recomputeRowHeights();
+      this.listRef.current.forceUpdate();
 
-      this.listRef.current.scrollToRow(listItems.size);
+      // this.listRef.current.scrollToRow(listItems.size);
     }
   }
 
@@ -115,4 +118,4 @@ class InverseList extends Component {
   }
 }
 
-export default InverseList;
+export default sortableContainer(InverseList);
