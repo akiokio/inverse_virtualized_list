@@ -28,12 +28,25 @@ class InverseList extends Component {
 
   cache = new CellMeasurerCache({
     fixedWidth: true,
-    minHeight: 50
+    defaultHeight: 100,
+    minHeight: 100
   });
 
   noRowsRenderer = () => <NoRows />;
+
   rowRenderer = ({ index, key, parent, style }) => {
     const { listItems, handleRemoveItem } = this.props;
+    const item = listItems.get(index);
+    const content = (
+      <Fragment>
+        <div>{item.get("content")}</div>
+        <br />
+        <div>
+          <strong>Position on the generated batch: </strong>
+          {item.get("localIndex")}
+        </div>
+      </Fragment>
+    );
     return (
       <CellMeasurer
         cache={this.cache}
@@ -42,17 +55,13 @@ class InverseList extends Component {
         rowIndex={index}
         parent={parent}
       >
-        {({ measure }) => {
-          return (
-            <div style={style}>
-              <ListItem
-                item={listItems.get(index)}
-                index={index}
-                handleRemove={handleRemoveItem}
-              />
-            </div>
-          );
-        }}
+        <div style={style}>
+          <ListItem
+            index={index}
+            handleRemove={handleRemoveItem}
+            content={content}
+          />
+        </div>
       </CellMeasurer>
     );
   };
@@ -72,7 +81,6 @@ class InverseList extends Component {
   handleScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
     const { listItems } = this.props;
     const isAtTheBottom = clientHeight + scrollTop === scrollHeight;
-
     const shouldShowScrollToBottomButton =
       clientHeight > 0 && !isAtTheBottom && listItems.size > 0;
     this.setState({ shouldShowScrollToBottomButton });
@@ -95,7 +103,7 @@ class InverseList extends Component {
               height={height}
               width={width}
               deferredMeasurementCache={this.cache}
-              overscanRowCount={10}
+              overscanRowCount={20}
               rowCount={listItems.size}
               rowHeight={this.cache.rowHeight}
               rowRenderer={this.rowRenderer}
