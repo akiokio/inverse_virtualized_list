@@ -62,8 +62,9 @@ class InverseList extends Component {
       this.cache.clearAll();
       this.listRef.current.recomputeRowHeights();
       this.listRef.current.forceUpdate();
-
-      // this.listRef.current.scrollToRow(listItems.size);
+      if (listItems.size > prevProps.listItems.size) {
+        this.listRef.current.scrollToRow(listItems.size);
+      }
     }
   }
 
