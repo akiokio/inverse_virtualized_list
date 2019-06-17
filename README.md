@@ -12,6 +12,8 @@ Url: https://inverselist.akio.dev/
 
 - Test coverage is limited due to time restraints
   Example:
+
+```
   ----------|----------|----------|----------|----------|-------------------|
   File | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s |
   ----------|----------|----------|----------|----------|-------------------|
@@ -22,5 +24,7 @@ Url: https://inverselist.akio.dev/
   Tests: 14 passed, 14 total
   Snapshots: 0 total
   Time: 3.39s
+
+```
 
 - Continous deploy done via netlify when the master branch is updated
