@@ -9,6 +9,20 @@ Github: https://github.com/akiokio/inverse_virtualized_list
 
 Url: https://inverselist.akio.dev/
 
+### Requirements:
+
+1. [x] Scrollbar should be at the bottom on first draw
+2. [x] There should be a text-field for entering number of items to generate.
+3. [x] Each item should have a dynamic height based on the content inside (random lorem ipsum)
+4. [x] Scrollbar should perform smoothly no matter the # of items (which could be thousands). Some method of virtualization should be used.
+5. [x] Last item generated must be at bottom not top
+6. [x] Back to bottom button if scrolled up
+7. [x] Reset button to clear the list and start over
+8. [x] If list is populated, any further generated items should be added to the bottom of the list. Scrollbar should jump to end.
+9. [x] Ability to delete individual items
+10. [x] Ability to drag and reorder items
+11. [x] Ability to save state on local storage and reload on refresh
+
 ### Assumptions and observations
 
 - Test coverage is limited due to time restraints
