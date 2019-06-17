@@ -3,7 +3,7 @@ import { List, fromJS } from "immutable";
 const STATE_KEY = "inverseListState";
 
 export const initialState = {
-  sampleSize: "100",
+  sampleSize: "",
   listItems: List(),
   generateButtonEnabled: true
 };

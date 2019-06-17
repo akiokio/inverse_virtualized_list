@@ -44,12 +44,13 @@ class InverseList extends Component {
       >
         {({ measure }) => {
           return (
-            <ListItem
-              style={style}
-              item={listItems.get(index)}
-              index={index}
-              handleRemove={handleRemoveItem}
-            />
+            <div style={style}>
+              <ListItem
+                item={listItems.get(index)}
+                index={index}
+                handleRemove={handleRemoveItem}
+              />
+            </div>
           );
         }}
       </CellMeasurer>
