@@ -25,8 +25,8 @@ Url: https://inverselist.akio.dev/
 
 ### Assumptions and observations
 
-- Test coverage is limited due to time restraints
-  Example:
+- Test coverage is limited due to time restraints, currently `App.js` has 100% coverage
+Example:
 
 ```
   ----------|----------|----------|----------|----------|-------------------|
