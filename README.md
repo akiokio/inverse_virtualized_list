@@ -43,3 +43,4 @@ Url: https://inverselist.akio.dev/
 ```
 
 - Continous deploy done via netlify when the master branch is updated
+- PWA enabled via service workers
