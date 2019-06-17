@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Map } from "immutable";
+import { sortableElement } from "react-sortable-hoc";
 
 import styles from "./ListItem.module.scss";
 
@@ -12,13 +13,8 @@ const ListItem = ({ style, item, handleRemove, index }) => {
           <div>{item.get("content")}</div>
           <br />
           <div>
-            <strong>Created at: </strong>
-            {item.get("createdAt")}
-          </div>
-          <br />
-          <div>
-            <strong>Position: </strong>
-            {index + 1}
+            <strong>Position on the generated batch: </strong>
+            {item.get("localIndex")}
           </div>
         </div>
         <div className={styles.ItemRightSide}>
@@ -41,4 +37,4 @@ ListItem.propTypes = {
   index: PropTypes.number.isRequired
 };
 
-export default ListItem;
+export default sortableElement(ListItem);

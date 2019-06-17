@@ -69,6 +69,19 @@ class App extends Component {
     });
   };
 
+  onSortEnd = ({ oldIndex, newIndex }) => {
+    if (oldIndex === newIndex) return;
+
+    const { listItems } = this.state;
+    const copyList = List(listItems);
+    const item = copyList.get(oldIndex);
+    const newList = copyList.splice(oldIndex, 1).splice(newIndex, 0, item);
+
+    this.setState({
+      listItems: newList
+    });
+  };
+
   render() {
     const { listItems, sampleSize, generateButtonEnabled } = this.state;
     return (
@@ -87,6 +100,9 @@ class App extends Component {
             <InverseList
               listItems={listItems}
               handleRemoveItem={this.handleRemoveItem}
+              onSortEnd={this.onSortEnd}
+              lockAxis="y"
+              disableAutoscroll
             />
           </div>
         </section>
