@@ -18,9 +18,13 @@ class App extends Component {
     this.state = loadedState;
 
     window.addEventListener("beforeunload", event => {
-      saveState(this.state);
+      this.handleSaveState();
     });
   }
+
+  handleSaveState = () => {
+    saveState(this.state);
+  };
 
   handleSampleSizeChanged = event => {
     this.setState({ sampleSize: event.target.value });
@@ -49,9 +53,11 @@ class App extends Component {
     const desiredSampleSize = parseInt(sampleSize);
     if (!desiredSampleSize) {
       alert("Please provide a number");
+      this.setState({ generateButtonEnabled: true });
     } else if (desiredSampleSize < 0) {
       alert("Please provide a positive number");
-    } else if (desiredSampleSize >= 500000) {
+      this.setState({ generateButtonEnabled: true });
+    } else if (desiredSampleSize >= 50000) {
       const confirmation = window.confirm(
         "Rendering that amount of items will work but it can take a while, do you want to continue?"
       );

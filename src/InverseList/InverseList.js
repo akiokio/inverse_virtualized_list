@@ -86,7 +86,7 @@ class InverseList extends Component {
     this.setState({ shouldShowScrollToBottomButton });
   };
 
-  handleScrollToButtom = () => {
+  handleScrollToBottom = () => {
     const { listItems } = this.props;
     this.listRef.current.scrollToRow(listItems.size);
   };
@@ -117,7 +117,7 @@ class InverseList extends Component {
         </AutoSizer>
         {shouldShowScrollToBottomButton && (
           <button
-            onClick={this.handleScrollToButtom}
+            onClick={this.handleScrollToBottom}
             className={styles.ScrolltoBottomButton}
           >
             Return to bottom
