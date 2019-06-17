@@ -1,7 +1,7 @@
 # Inverse virtualized list
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/a87095ce-b244-4534-ad89-a1ee77517265/deploy-status)](https://app.netlify.com/sites/Inverselist/deploys)
-https://travis-ci.com/akiokio/inverse_virtualized_list.svg?token=kkCs5gbVzxyoWQcXqQKs&branch=master
+[![Build Status](https://travis-ci.com/akiokio/inverse_virtualized_list.svg?token=kkCs5gbVzxyoWQcXqQKs&branch=master)](https://travis-ci.com/akiokio/inverse_virtualized_list)
 
 Author: Guilherme Akio Sakae
 
